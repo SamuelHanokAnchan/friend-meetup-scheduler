@@ -29,7 +29,8 @@ const friends = ['Samuel', 'Sharon', 'Vibuthi', 'Vaishak', 'Anirudh', 'Gautam'];
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 app.get('/', (req, res) => {
-  res.render('index', { friends, days });
+    res.render("index", { overlaps: {} }); // or actual overlaps if available
+
 });
 
 app.post('/submit', (req, res) => {
