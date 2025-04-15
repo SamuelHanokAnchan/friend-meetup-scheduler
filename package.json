@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "main": "app.js",
     "scripts": {
+        "postinstall": "npm rebuild sqlite3",
       "start": "node app.js"
     },
     "dependencies": {
