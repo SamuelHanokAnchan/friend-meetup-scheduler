@@ -1,0 +1,50 @@
+<!-- Basic form to enter availability -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Schedule</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Friend Group Scheduler</h1>
+  <form action="/submit" method="post">
+    <label>Name:
+      <select name="name" required>
+        <% friends.forEach(f => { %>
+          <option value="<%= f %>"><%= f %></option>
+        <% }) %>
+      </select>
+    </label>
+    <br><br>
+    <% days.forEach(day => { %>
+      <label><%= day %>:
+        <input type="text" name="day_<%= day %>" placeholder="e.g., 10:00 - 14:00">
+      </label><br>
+    <% }) %>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
+
+// STEP 4: views/results.ejs
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Results</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Common Free Time</h1>
+  <% if (Object.keys(overlaps).length === 0) { %>
+    <p>No common time found.</p>
+  <% } else { %>
+    <ul>
+      <% Object.keys(overlaps).forEach(day => { %>
+        <li><%= day %>: <%= overlaps[day][0] %> to <%= overlaps[day][1] %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+  <a href="/">Back</a>
+</body>
+</html>
